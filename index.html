@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookboxd - Track Your Reading Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__brand">
+                <h1 class="nav__logo">Bookboxd</h1>
+            </div>
+            
+            <div class="nav__search">
+                <input type="text" id="searchInput" class="form-control nav__search-input" placeholder="Search books, authors, or users...">
+            </div>
+            
+            <div class="nav__menu">
+                <button class="nav__item" data-view="home">Home</button>
+                <button class="nav__item" data-view="discover">Discover</button>
+                <button class="nav__item" data-view="lists">My Lists</button>
+                <button class="nav__item" data-view="profile">Profile</button>
+                <button class="nav__item" data-view="social">Social</button>
+                <button id="themeToggle" class="btn btn--outline btn--sm nav__theme">🌙</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home View -->
+        <section id="homeView" class="view view--active">
+            <div class="container">
+                <div class="hero">
+                    <h2 class="hero__title">Discover Your Next Great Read</h2>
+                    <p class="hero__subtitle">Track books, write reviews, and connect with fellow readers</p>
+                </div>
+                
+                <div class="section">
+                    <h3 class="section__title">Trending This Week</h3>
+                    <div class="book-grid" id="trendingBooks"></div>
+                </div>
+                
+                <div class="section">
+                    <h3 class="section__title">Recent Activity</h3>
+                    <div class="activity-feed" id="recentActivity"></div>
+                </div>
+                
+                <div class="section">
+                    <h3 class="section__title">Popular Lists</h3>
+                    <div class="lists-grid" id="popularLists"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discover View -->
+        <section id="discoverView" class="view">
+            <div class="container">
+                <div class="discover-header">
+                    <h2>Discover Books</h2>
+                    <div class="filters">
+                        <select id="genreFilter" class="form-control filter">
+                            <option value="">All Genres</option>
+                        </select>
+                        <select id="ratingFilter" class="form-control filter">
+                            <option value="">All Ratings</option>
+                            <option value="4.5">4.5+ Stars</option>
+                            <option value="4.0">4.0+ Stars</option>
+                            <option value="3.5">3.5+ Stars</option>
+                        </select>
+                        <select id="yearFilter" class="form-control filter">
+                            <option value="">All Years</option>
+                            <option value="2020">2020+</option>
+                            <option value="2010">2010+</option>
+                            <option value="2000">2000+</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="book-grid" id="discoverBooks"></div>
+            </div>
+        </section>
+
+        <!-- Profile View -->
+        <section id="profileView" class="view">
+            <div class="container">
+                <div class="profile-header">
+                    <div class="profile-info">
+                        <h2 class="profile-name">Sarah Chen</h2>
+                        <p class="profile-username">@bookworm_sarah</p>
+                        <p class="profile-bio">Literature professor who loves contemporary fiction and magical realism. Always looking for my next favorite book!</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat__number">28</span>
+                                <span class="stat__label">Books Read</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat__number">67</span>
+                                <span class="stat__label">Followers</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat__number">45</span>
+                                <span class="stat__label">Following</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-content">
+                    <div class="profile-section">
+                        <h3>Reading Goal 2024</h3>
+                        <div class="reading-goal">
+                            <div class="goal-progress">
+                                <div class="goal-bar">
+                                    <div class="goal-fill" style="width: 54%"></div>
+                                </div>
+                                <p>28 of 52 books (54%)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>Favorite Books</h3>
+                        <div class="book-grid" id="favoriteBooks"></div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>Currently Reading</h3>
+                        <div class="book-grid" id="currentlyReading"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lists View -->
+        <section id="listsView" class="view">
+            <div class="container">
+                <div class="lists-header">
+                    <h2>My Reading Lists</h2>
+                    <button class="btn btn--primary" id="createListBtn">Create New List</button>
+                </div>
+                
+                <div class="lists-tabs">
+                    <button class="tab tab--active" data-tab="my-lists">My Lists</button>
+                    <button class="tab" data-tab="want-to-read">Want to Read</button>
+                    <button class="tab" data-tab="read">Read</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="myListsTab" class="tab-pane tab-pane--active">
+                        <div class="lists-grid" id="userLists"></div>
+                    </div>
+                    <div id="wantToReadTab" class="tab-pane">
+                        <div class="book-grid" id="wantToReadBooks"></div>
+                    </div>
+                    <div id="readTab" class="tab-pane">
+                        <div class="book-grid" id="readBooks"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social View -->
+        <section id="socialView" class="view">
+            <div class="container">
+                <h2>Social Feed</h2>
+                <div class="social-content">
+                    <div class="activity-feed" id="socialFeed"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Book Detail Modal -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div class="book-detail" id="bookDetailContent">
+                <!-- Book details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Rating Modal -->
+    <div id="ratingModal" class="modal">
+        <div class="modal-content modal-content--small">
+            <button class="modal-close" id="closeRatingModal">&times;</button>
+            <div class="rating-form">
+                <h3>Rate this book</h3>
+                <div class="star-rating" id="starRating">
+                    <span class="star" data-rating="1">★</span>
+                    <span class="star" data-rating="2">★</span>
+                    <span class="star" data-rating="3">★</span>
+                    <span class="star" data-rating="4">★</span>
+                    <span class="star" data-rating="5">★</span>
+                </div>
+                <textarea class="form-control" id="reviewText" placeholder="Write a review (optional)" rows="4"></textarea>
+                <div class="modal-actions">
+                    <button class="btn btn--secondary" id="cancelRating">Cancel</button>
+                    <button class="btn btn--primary" id="submitRating">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
