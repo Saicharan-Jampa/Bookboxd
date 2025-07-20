@@ -4,7 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookboxd - Track Your Reading Journey</title>
+    <!-- Font + CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero__title {
+            background: linear-gradient(90deg, #00C9FF, #92FE9D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        .card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3);
+            transform: translateY(-6px);
+        }
+
+        button, .btn {
+            transition: 0.2s ease;
+        }
+
+        button:hover, .btn:hover {
+            box-shadow: 0 0 12px #00f6ffcc;
+            transform: scale(1.05);
+        }
+
+        input[type="text"]:focus {
+            border-color: #00f6ff;
+            outline: none;
+            box-shadow: 0 0 8px #00f6ff77;
+            transition: 0.3s;
+        }
+
+        .rating {
+            color: gold;
+            font-size: 1rem;
+        }
+    </style>
 </head>
 <body>
     <!-- Header Navigation -->
@@ -13,11 +61,9 @@
             <div class="nav__brand">
                 <h1 class="nav__logo">Bookboxd</h1>
             </div>
-            
             <div class="nav__search">
                 <input type="text" id="searchInput" class="form-control nav__search-input" placeholder="Search books, authors, or users...">
             </div>
-            
             <div class="nav__menu">
                 <button class="nav__item" data-view="home">Home</button>
                 <button class="nav__item" data-view="discover">Discover</button>
@@ -38,17 +84,14 @@
                     <h2 class="hero__title">Discover Your Next Great Read</h2>
                     <p class="hero__subtitle">Track books, write reviews, and connect with fellow readers</p>
                 </div>
-                
                 <div class="section">
                     <h3 class="section__title">Trending This Week</h3>
                     <div class="book-grid" id="trendingBooks"></div>
                 </div>
-                
                 <div class="section">
                     <h3 class="section__title">Recent Activity</h3>
                     <div class="activity-feed" id="recentActivity"></div>
                 </div>
-                
                 <div class="section">
                     <h3 class="section__title">Popular Lists</h3>
                     <div class="lists-grid" id="popularLists"></div>
@@ -107,7 +150,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="profile-content">
                     <div class="profile-section">
                         <h3>Reading Goal 2024</h3>
@@ -120,12 +162,10 @@
                             </div>
                         </div>
                     </div>
-                    
                     <div class="profile-section">
                         <h3>Favorite Books</h3>
                         <div class="book-grid" id="favoriteBooks"></div>
                     </div>
-                    
                     <div class="profile-section">
                         <h3>Currently Reading</h3>
                         <div class="book-grid" id="currentlyReading"></div>
@@ -141,13 +181,11 @@
                     <h2>My Reading Lists</h2>
                     <button class="btn btn--primary" id="createListBtn">Create New List</button>
                 </div>
-                
                 <div class="lists-tabs">
                     <button class="tab tab--active" data-tab="my-lists">My Lists</button>
                     <button class="tab" data-tab="want-to-read">Want to Read</button>
                     <button class="tab" data-tab="read">Read</button>
                 </div>
-                
                 <div class="tab-content">
                     <div id="myListsTab" class="tab-pane tab-pane--active">
                         <div class="lists-grid" id="userLists"></div>
@@ -177,9 +215,7 @@
     <div id="bookModal" class="modal">
         <div class="modal-content">
             <button class="modal-close" id="closeModal">&times;</button>
-            <div class="book-detail" id="bookDetailContent">
-                <!-- Book details will be populated here -->
-            </div>
+            <div class="book-detail" id="bookDetailContent"></div>
         </div>
     </div>
 
